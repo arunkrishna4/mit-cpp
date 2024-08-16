@@ -1,0 +1,224 @@
+//WAP to calculate compound interest
+//Arun krishna
+//240970059
+//5-8-24
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+        double amount,principal,rate,no,t,CI;
+        cout<<"enter the principal amount: ";
+        cin>>principal;
+        cout<<"enter the annual interest rate: ";
+        cin>>rate;
+        cout<<"enter the time period in years: ";
+        cin>>t;
+        cout<<"enter the number of times that interest is compounded per year: ";
+        cin>>no;
+        amount=principal*pow(1+(rate/(no*100)),(no*t));
+        CI=amount-principal;
+        cout<<"the compound interest is: "<<CI<<endl;
+        return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//WAP to accept student details and give the score card based
+//Arun krishna
+//240970059
+//5/8/24
+#include<iostream>
+using namespace std;
+int main()
+{
+        char name[10],s1[10],s2[10],s3[10],s4[10],s5[10],grade;
+        int regdno,yoj,semno,m1,m2,m3,m4,m5,tot;
+        cout<<"Enter your name: ";
+        cin>>name;
+        cout<<"enter the year of joining: ";
+        cin>>yoj;
+        cout<<"enter the semester number: ";
+        cin>>semno;
+        cout<<"Enter your registration number: ";
+        cin>>regdno;
+        cout<<"enter the name and marks of 1st sub: ";
+        cin>>s1>>m1;
+        cout<<"enter the name and marks of 2nd sub: ";
+        cin>>s2>>m2;
+        cout<<"enter the name and marks of 3rd sub: ";
+        cin>>s3>>m3;
+        cout<<"enter the name and marks of 4th sub: ";
+        cin>>s4>>m4;
+        cout<<"enter the name and marks of 5th sub: ";
+        cin>>s5>>m5;
+        tot=m1+m2+m3+m4+m5;
+        float avg=tot/5;
+        if (avg>=90){
+                char grade='A';
+        }
+        else if (avg>=80){
+                grade = 'B';
+        }
+        else if (avg>=61){
+                grade = 'C';
+        }
+        else if (avg>=51){
+                grade='D';
+         }
+        else if(avg>=41){
+                grade='E';
+        }
+        else{
+                grade='F';
+        }
+
+        cout<<"\t\t Score Card For Student:"<<name<<endl;
+        cout<<"Registration Number: "<<regdno<<"\t Semester: "<<semno<<"\t Year:"<<yoj<<endl;
+        cout<<"Grade Assigned: "<<endl;
+        cout<<"Serial No."<<"\t\t"<<"Subject Name"<<"\t\t"<<"Marks Scored (Out of 100)"<<endl;
+        cout<<"--------------------------------------------------------------------------"<<endl;
+        cout<<"1"<<"\t\t\t"<<s1<<"\t\t\t"<<m1<<endl;
+        cout<<"2"<<"\t\t\t"<<s2<<"\t\t\t"<<m2<<endl;
+        cout<<"3"<<"\t\t\t"<<s3<<"\t\t\t"<<m3<<endl;
+        cout<<"4"<<"\t\t\t"<<s4<<"\t\t\t"<<m4<<endl;
+        cout<<"5"<<"\t\t\t"<<s5<<"\t\t\t"<<m5<<endl;
+        cout<<"\t\t\t\t\t\t\t\t"<<"total: "<<"\t"<<m1+m2+m3+m4+m5<<endl;
+        cout<<"\t\t\t\t\t\t\t\t"<<"Average: "<<avg<<endl;
+        cout<<"\t\t\t\t\t\t\t\t"<<"Grade: "<<"\t"<<grade<<endl;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//WAP to calculate the area of a circle
+//Arun krishna
+//240970059
+#include<iostream>
+using namespace std;
+int main()
+{
+        int rad,base,hei,carea,tarea;
+        cout<<"enter the radius of the circle"<<endl;
+        cin>>rad;
+        carea=3.14*rad*rad;
+        cout<<"the area of the circle is: "<<carea<<endl;
+        cout<<"enter the base and height of triangle"<<endl;
+        cin>>base>>hei;
+        tarea=0.5*base*hei;
+        cout<<"the area of triangle is: "<<tarea<<endl;
+        return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//swapping of 2 numbers without using the temp variable
+//Arun krishna
+//20240900059
+#include<iostream>
+using namespace std;
+int main()
+{
+        int num1, num2;
+        cout<<"enter a number: ";
+        cin>>num1;
+        cout<<"enter next number: ";
+        cin>>num2;
+        cout<<"Before swapping: "<<endl;
+        cout<<"num1= "<<num1<<"\t"<<"num2= "<<num2<<endl;
+        num1=num1+num2;
+        num2=num1-num2;
+        num1=num1-num2;
+        cout<<"after swapping "<<endl;
+        cout<<"num1: "<<num1<<"\t"<<"num2: "<<num2;
+        return 0;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+//WAP to convert given sec into hours and min
+//Arun krishna
+//5-8-2024
+//240970059
+#include<iostream>
+using namespace std;
+int main(){
+        int inp,h,min,sec;
+        cout<<"enter the seconds"<<endl;
+        cin>>inp;
+        h=inp/3600;
+        inp%=3600;
+        min=inp/60;
+        inp%=60;
+        sec=inp;
+        cout<<h<<"h:"<<min<<"m:"<<sec<<"s";
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//WAP to convert distance in mm to cm,inch,feet
+//Arun krishna
+//240970059
+#include<iostream>
+using namespace std;
+int main()
+{
+        float inp,cm,inch,feet;
+        cout<<"enter the mm: "<<endl;
+        cin>>inp;
+        cm=inp/10;
+        inch=cm/2.5;
+        feet=inch/12;
+        cout<<cm<<" cm"<<endl;
+        cout<<inch<<" inch"<<endl;
+        cout<<feet<<" feet";
+        return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+//write a c++ program to find smallest of 3 numbers
+//Arun krishna
+//240970059
+#include<iostream>
+using namespace std;
+int main()
+{
+
+        int num1, num2,num3;
+        cout<<"enter 3 numbers";
+        cin>>num1>>num2>>num3;
+        if(num1<num2 && num1<num3){
+                cout<<num1<<"is the smallest";
+        }
+        else if (num2<num3){
+                cout<<num2<<"is the smallest";
+        }
+        else{
+                cout<<num3<<"is the smallest";
+        }
+        return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+//WAP to convert the temparature into fahrenheit or celsius
+//arun krishna
+//240970059
+//5-8-24
+#include<iostream>
+using namespace std;
+int main()
+{
+        float c,inp1,inp2,f;
+        cout<<"enter the temparature in fahrenheit: ";
+        cin>>inp1;
+        c=5.0/9.0*(inp1-32.0);
+        cout<<c<<" celcius"<<endl;
+        cout<<"enter the temparature in celsius: ";
+        cin>>inp2;
+        f=(inp2*9.0/5.0)+32;
+        cout<<f<<" farenheit";
+        return 0;
+}
+///////////////////////////////////////
