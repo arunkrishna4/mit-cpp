@@ -1,0 +1,247 @@
+//12-8-24
+#include<iostream>
+using namespace std;
+int main(){
+        struct cust{
+                char name[50];
+                int acc_no;
+                char acc_type;
+                int bal;
+        }c;
+        int dep,wth,ch;
+        cout<<"enter the name:";
+        cin>>c.name;
+        cout<<"enter the acc number:";
+        cin>>c.acc_no;
+        cout<<"enter the acc type: ";
+        cin>>c.acc_type;
+        cout<<"enter the balance:";
+        cin>>c.bal;
+        cout<<"press 1 to deposit\n press 2 to check the balance and withdraw \n press 3 to exit:";
+        cin>>ch;
+        switch(ch){
+        case 1:
+                cout<<"enter the amount: ";
+                cin>>dep;
+                c.bal+=dep;
+                break;
+        case 2:
+                cout<<"the available balance is: "<<c.bal;
+                 cout<<"enter the amount to withdraw:";
+                cin>>wth;
+                c.bal-=wth;
+                cout<<"balance after withdrawel is: "<<c.bal;
+                break;
+
+        }
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+//12-8-24
+#include<iostream>
+using namespace std;
+int main(){
+        int inp,res[48],i=0;
+        cout<<"enter the number";
+        cin>>inp;
+        while(inp>0){
+                res[i]=inp%2;
+                inp=inp/2;
+                i++;
+        }
+        for(int j=i-1;j>=0;j--){
+                cout<<res[j]<<' ';
+        }
+        cout<<endl;
+
+        int num,dec=0,base=1,l_digit;
+        cout<<"enter the binary number: ";
+        cin>>num;
+        int temp=num;
+        while(temp){
+                l_digit=temp%10;
+                temp=temp/10;
+                dec+=l_digit*base;
+                base=base*2;
+        }
+        cout<<dec<<" is the decimal value";
+}
+
+///////////////////////////////////////////////////////////////////////
+
+//wap to make the change conerter
+//arun krishna
+//240970059
+#include <iostream>
+using namespace std;
+
+int main() {
+            int cash, amt,balance;
+            cout << "Enter the bill: ";
+            cin >> amt;
+            cout << "Enter the amount: ";
+            cin >> cash;
+            balance=cash-amt;
+            while(balance!=0){
+                    if(balance>=500){
+                            balance-=500;
+                            cout<<"500"<<" ";
+                    }
+                    else if(balance>=200){
+                                balance-=200;
+                                cout<<"200"<<" ";
+                        }
+                    else if(balance>=100){
+                            balance-=100;
+                            cout<<"100"<<" ";
+                    }
+                    else if(balance>=50){
+                            balance-=50;
+                            cout<<"50"<<" ";
+                     }
+                    else if(balance>=20){
+                            balance-=20;
+                            cout<<"20"<<" ";
+                    }
+                    else if(balance>=10){
+                            balance-=10;
+                            cout<<"10"<<" ";
+                    }
+                    else if(balance>=5){
+                            balance-=5;
+                            cout<<"5"<<" ";
+                    }
+                    else if(balance>=2){
+                            balance-=2;
+                            cout<<"2"<<" ";
+                    }
+                    else if(balance>=1){
+                            balance-=1;
+                            cout<<"1"<<" ";
+                    }
+
+            }
+
+            return 0;
+}
+
+/////////////////////////////////////////////////////////////////////
+
+//12-8-24
+#include <iostream>
+using namespace std;
+
+int main() {
+            int n, t1 = 0, t2 = 1, nextTerm = 0;
+
+                cout << "Enter the number of terms: ";
+                    cin >> n;
+
+                        cout << "Fibonacci Series: ";
+
+                            for (int i = 1; i <= n; ++i) {
+                                            // Prints the first two terms.
+                                 if(i == 1) {
+                                             cout << t1 << ", ";
+                                             continue;
+                                         }
+                                 if(i == 2) {
+                                                 cout << t2 << ", ";
+                                                 continue;
+                                 }
+                                 nextTerm = t1 + t2;
+                                 t1 = t2;
+                                 t2 = nextTerm;
+                                                cout << nextTerm << ", ";
+                            }
+                            return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+//find the perfect cube of the number
+//arunkrishna
+//12-8-24
+#include<iostream>
+using namespace std;
+int main(){
+        bool check=false;
+        int cube,inp,res,flag=0;
+        cout<<"enter a number";
+        cin>>inp;
+        for(int i=0;i<=inp;i++){
+
+                cube=i*i*i;
+                if (cube==inp){
+                        cout<<i<<" is the cube root";
+                        check=true;
+                }
+
+        }
+        if(check==false){
+                cout<<"does not have a perfect cube.";
+        }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+//prime number between range
+//arunkrishna
+//12-8-24
+#include<iostream>
+using namespace std;
+bool isprime(int n){
+        for(int i=2;i<n;i++){
+                if(n%i==0){
+                        return false;
+                }
+        }
+}
+int main(){
+        int strt,end;
+        cout<<"enter the start range and end range ";
+        cin>>strt>>end;
+        for(int j=strt;j<=end;j++){
+                if (isprime(j)){
+                        cout<<j<<" ";
+                }
+        }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+#include<iostream>
+using namespace std;
+int main(){
+        int n;
+        cout<<"enter the number of lines";
+        cin>>n;
+        for(int i=0;i<n;i++){
+                for (int j=0;j<n-i;j++){
+                        cout<<" * ";
+                }
+                cout<<endl;
+        }
+
+        cout<<endl;
+        for(int i=0;i<n;i++){
+                char ch='A';
+                for(int j=0;j<n-i;j++){
+                        cout<<ch;
+                        ch++;
+                }
+                cout<<endl;
+        }
+        cout<<endl;
+        int num=1;
+        for (int i=1;i<=n;i++){
+                for(int j=0;j<i;j++){
+                        cout<<num;
+                        num++;
+                }
+                cout<<endl;
+        }
+}
+
