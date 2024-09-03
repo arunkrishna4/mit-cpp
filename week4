@@ -1,0 +1,100 @@
+//240970059
+#include<iostream>
+                }
+                void disp(){
+                        cout<<"name: "<<name<<endl;
+                        cout<<"account number: "<<acc_no<<endl;
+                        cout<<"account type: "<<acc_typ<<endl;
+                        cout<<"balance: "<<bal<<endl;
+
+                }
+                friend void wth(bank &);
+};
+void wth(bank &b){
+        int amt;
+        cout<<"Your current balance is: "<<b.bal<<endl;
+        cout<<"enter the amount to withdraw: ";
+        cin>>amt;
+        if(amt>b.bal){
+                cout<<"Insufficient balance"<<endl;
+        }
+        else{
+                b.bal-=amt;
+                cout<<"Your current balance is: "<<b.bal<<endl;
+
+        }
+}
+
+
+int main(){
+        int ch1,ch2;
+        bank b1,b2;
+        b1.inp();
+        b2.inp();
+        cout<<"Enter 1 to deposit \n Enter 2 to withdraw"<<endl;
+        cin>>ch1;
+        switch(ch1){
+                case 1:
+                        b1.dep();
+                        b2.dep();
+                        break;
+                case 2:
+                        wth(b1);
+                        wth(b2);
+                        break;
+        }
+        b1.disp();
+        b2.disp();
+}
+--------------------------------------------------------------------------------------------
+
+#include<iostream>
+using namespace std;
+class flight{
+        int fno;
+        float dist,fuel;
+        char dest[20];
+        void cal_fuel(){
+                if(dist>2000){
+                        fuel=2200;
+                }
+                else if(dist>1000){
+                        fuel=1100;
+                }
+                else{
+                        fuel=500;
+                }
+        }
+        public:
+                flight()
+                {
+                        dist=500;
+                }
+                void info(){
+                        cout<<"enter the flight number: ";
+                        cin>>fno;
+                        cout<<"Enter the destination: ";
+                        cin>>dest;
+                        cout<<"Enter the distance: ";
+                        cin>>dist;
+                        cal_fuel();
+                }
+                void dis_info(){
+                        cout<<"your flight number is: "<<fno<<endl;
+                        cout<<"your destination is: "<<dest<<endl;
+                        cout<<"the total distance is: "<<dist<<endl;
+                        cout<<"The fuel in your flight is: "<<fuel<<endl;
+                }
+
+
+};
+int main(){
+        flight f;
+        f.info();
+        f.dis_info();
+
+
+}
+
+--------------------------------------------------------------------------------------------
+
