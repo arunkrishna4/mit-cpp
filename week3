@@ -1,0 +1,180 @@
+#include<iostream>
+using namespace std;
+inline int cube(int n){
+        return n*n*n;
+}
+
+int main(){
+        int n;
+        cout<<"enter a number to find it's cube: ";
+        cin>>n;
+        int res=cube(n);
+        cout<<"the cube of the number is: "<<res<<endl;
+        return 0;
+}
+-------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+struct emp{
+                        int emp_no;
+                        char ename[20];
+                        int basic,DA,IT,net_sal;
+}e;
+void inp(emp &e){
+        cout<<"enter the number: ";
+        cin>>e.emp_no;
+        cout<<"enter the name: ";
+        cin>>e.ename;
+        cout<<"enter the basic salart: ";
+        cin>>e.basic;
+}
+int calc(emp &e){
+        e.DA=0.12*e.basic;
+        int gs=e.basic+e.DA;
+        e.IT=0.18*gs;
+        e.net_sal=gs-e.IT;
+}
+
+void disp(emp &e){
+        cout<<"employee number: "<<e.emp_no<<endl;
+        cout<<"Employee Name: "<<e.ename<<endl;
+        cout<<"Net salary: "<<e.net_sal<<endl;
+}
+int main(){
+        int num;
+        cout<<"Enter the number of employees: ";
+        cin>>num;
+        emp e[num];
+        for(int i=0;i<num;i++){
+                cout<<"Enter details of employee "<<i+1<<endl;
+                inp(e[i]);
+                calc(e[i]);
+        }
+        for(int i=0;i<num;i++){
+                disp(e[i]);
+        }
+}
+-------------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+
+int inv(int a){
+        int res=0,ld;
+        while(a>0){
+                ld=a%10;
+                res=res*10+ld;
+                a/=10;
+
+        }
+        return res;
+}
+int doub(int x){
+        return x*2;
+
+}
+
+
+int main(){
+        int inve,inp,dou;
+        cout<<"enter a number: ";
+        cin>>inp;
+        inve=inv(inp);
+        dou=doub(inve);
+        cout<<"the inversed num is: "<<inve<<endl;
+        cout<<"the double of inversed num is: "<<dou<<endl;
+}
+------------------------------------------------------------------------------------------------------
+
+#include<iostream>
+#include<string>
+using namespace std;
+int pallin(string a,int s){
+        for(int i=0;i<s;i++){
+                if(a[i]==a[s-i-1]){
+                        return 1;
+                }
+                else{
+                        return 0;
+                }
+        }
+}
+
+int main(){
+        char inp[20];
+        int size;
+        cout<<"enter the size of string";
+        cin>>size;
+        cout<<"enter a string";
+        cin>>inp;
+        int res=pallin(inp,size);
+        if(res==1){
+                cout<<"string is a pallindrome";
+        }
+        else{
+                cout<<"not a pallindrome";
+        }
+}
+
+-----------------------------------------------------------------------------------------
+
+using namespace std;
+void swap(int &a,int &b){
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+}
+
+void swap(double &a,double &b){
+        double temp;
+        temp=a;
+        a=b;
+        b=temp;
+}
+
+void swap(char &a, char &b){
+        char temp;
+        temp=a;
+        a=b;
+        b=temp;
+}
+
+int main(){
+        int a,b,ch;
+        char c,d;
+        bool i=true;
+        double x,y;
+        while(i== true){
+        cout<<" enter 1 to swap integers \n enter 2 to swap floating numbers \n enter 3 swap chars \n enter 4 to exit"<<endl;
+        cin>>ch;
+
+        switch(ch){
+                case 1:
+                        cout<<"enter the integers: ";
+                        cin>>a>>b;
+                        swap(a,b);
+                        cout<<a<<"\t"<<b<<endl;
+                        break;
+                case 2:
+                        cout<<"enter the floats no: ";
+                        cin>>x>>y;
+                        swap(x,y);
+                        cout<<x<<"\t"<<y<<endl;
+                        break;
+                case 3:
+                        cout<<"enter the chars: ";
+                        cin>>c>>d;
+                        swap(c,d);
+                        cout<<c<<"\t"<<d<<endl;
+                        break;
+                case 4:
+                        i=false;
+                        break;
+                default:
+                        cout<<"enter the correct option";
+        }
+        }
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------
