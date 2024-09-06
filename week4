@@ -97,4 +97,56 @@ int main(){
 }
 
 --------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+int to_runs;
+class crick{
+        int pcode,no_mat,tot_run,not_out;
+        char name[20];
+        public:
+                float temp,tot_avg;
+                void inp(){
+                        cout<<"enter your name: ";
+                        cin>>name;
+                        cout<<" enter the player code: ";
+                        cin>>pcode;
+                        cout<<"enter the number of matches played: ";
+                        cin>>no_mat;
+                        cout<<"enter the total runs: ";
+                        cin>>tot_run;
+                        cout<<"enter the number of times not out: ";
+                        cin>>not_out;
+                }
+                void avg(){
+                        cout<<"The average runs of the player is: "<<(tot_run/no_mat)<<endl;
+                }
+                int total_runs(crick &c){
+                           to_runs+=c.tot_run;
+                           return to_runs;
+                }
+                float avg(crick c,int n){
+                           temp+=c.tot_run;
+                           tot_avg=temp/n;
+                           return tot_avg;
+                }
+};
 
+float avg(crick c,int n){
+        float temp,tot_avg;
+        temp+=c.tot_run;
+        tot_avg=temp/n;
+        return tot_avg;
+}
+int main(){
+        int num,tot_runs,avg_runs;
+        cout<<"enter the number of players: ";
+        cin>>num;
+        crick ply[num];
+        for (int i=0;i<num;i++){
+                ply[i].inp();
+                ply[i].avg();
+                if(i>=2){
+                        cout<<"avg score of the players: "<<avg(ply[i],i)<<endl;
+                }
+}
+}
