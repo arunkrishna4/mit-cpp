@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+class mat{
+        int a[10][10],r1,c1;
+        public:
+        void inp(){
+                cout<<"enter the number of rows"<<endl;
+                cin>>r1;
+                cout<<"enter the number of columns"<<endl;
+                cin>>c1;
+                for(int i=0;i<r1;i++){
+                        for(int j=0;j<c1;j++){
+                                cin>>a[i][j];
+                        }
+                }
+        }
+        bool operator == (mat &m) {
+                if(r1==m.r1 && c1==m.c1){
+                        return true;
+                }
+                else{
+                        return false;
+                }
+        }
+        mat operator +(mat &m){
+                mat temp;
+                temp.r1=m.r1;
+                temp.c1=m.c1;
+                for(int i=0;i<m.r1;i++){
+                        for(int j=0;j<m.c1;j++){
+                                temp.a[i][j]=a[i][j]+m.a[i][j];
+                        }
+                }
+                return temp;
+        }
+        mat operator -(mat &m){
+                mat temp2;
+                temp2.r1=m.r1;
+                temp2.c1=m.c1;
+                for(int i=0;i<m.r1;i++){
+                        for(int j=0;j<m.c1;j++){
+                                temp2.a[i][j]=a[i][j]-m.a[i][j];
+                        }
+                }
+                return temp2;
+        }
+        void show(){
+                for(int i=0;i<r1;i++){
+                        for(int j=0;j<c1;j++){
+                                cout<<a[i][j]<<"\t"<<endl;
+                        }
+                }
+        }
+};
+int main(){
+        mat m1,m2,m3,m4;
+        cout<<"enter the numbers for 1st matrix";
+        m1.inp();
+        cout<<"enter the numbers for 2nd matrix";
+        m2.inp();
+        if(m1==m2){
+
+                m3=m1+m2;
+                m4=m1-m2;
+        }
+        else{
+                cout<<"dimensions of the matrix are not matching";
+                exit(0);
+        }
+        cout<<"After addition: "<<endl;
+        m3.show();
+        cout<<"after substraction:"<<endl;
+        m4.show();
+
+}
