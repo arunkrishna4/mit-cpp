@@ -229,3 +229,40 @@ int main() {
 
     return 0;
 }
+
+#include<iostream>
+using namespace std;
+class complex{
+        int real,img;
+        public:
+        complex(){
+            real=0;img=0;
+        }
+        complex(int a,int b){
+            real=a;
+            img=b;
+        }
+        complex add(int a,complex c){
+            complex temp;
+            temp.real=a+c.real;
+            temp.img+=c.img;
+            return temp;
+        }
+        complex add(complex s1,complex s2){
+            complex temp;
+            temp.real=s1.real+s2.real;
+            temp.img=s1.img+s2.img;
+            return temp;
+        }
+        void disp(){
+            cout<<real<<" + "<<img<<"i"<<endl;
+        }
+};
+
+int main(){
+    complex s1(12,9),s2(1,1),res1,res2;
+    res1=res1.add(10,s1);
+    res2=res2.add(s1,s2);
+    res1.disp();
+    res2.disp();
+}
