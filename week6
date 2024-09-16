@@ -1,0 +1,70 @@
+6.1) 
+#include <iostream>
+#include<cstring>
+using namespace std;
+class strm {
+                    char str[100]; // Assuming maximum length of string is 100
+
+        public:
+                void inp(){
+                        cout<<"enter the string: ";
+                        cin>>str;
+                }
+                void dis(){
+                        cout<<str;
+                }
+                bool operator <=(strm s){
+                        return strcmp(str,s.str)<=0;
+                }
+};
+int main(){
+        strm s1,s2;
+        s1.inp();
+        s2.inp();
+        if(s1<=s2){
+                cout<<"is less than equal to the other"<<endl;
+        }
+        else{
+                cout<<"is greater than the other";
+        }
+
+}
+---------------------------------------------------------------------------------------------------------
+6.2)
+#include<iostream>
+using namespace std;
+class com{
+        int real,img;
+        public:
+                com(){
+                        real=0;img=0;
+                }
+                com(int a){
+                        real=a;img=0;
+                }
+                com(int a,int b){
+                        real=a;img=b;
+                }
+                com operator +(com c){
+                        com temp;
+                        temp.real=real+c.real;
+                        temp.img=img+c.img;
+                        return temp;
+                }
+                com operator -(com c){
+                        com temp;
+                        temp.real=real-c.real;
+                        temp.img=img-c.img;
+                        return temp;
+                }
+                void display(){
+                        cout<<real<<" + "<<img<<'j'<<endl;
+                }
+};
+int main(){
+        com c1(10,20),c2(20,40),c3,c4;
+        c3=c1+c2;
+        c4=c1-c2;
+        c3.display();
+        c4.display();
+}
