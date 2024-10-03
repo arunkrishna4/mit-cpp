@@ -64,3 +64,96 @@ int main() {
     return 0;
 }
 __________________________________________________________________________________________
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class employee{
+    int emp_code;
+    char emp_name[40];
+    public:
+        void inp_emp(){
+            cout<<"enter the employee code: ";
+            cin>>emp_code;
+            cout<<"Enter the name of the employee: ";
+            cin>>emp_name;
+        }
+        void disp_emp(){
+            cout<<"Employee code: "<<emp_code<<endl;
+            cout<<"Employee name: "<<emp_name<<endl;
+        }
+};
+class faculty:public employee{
+    char qual[40];
+    int yoe;
+    public:
+        void inp_te(){
+            cout<<"enter your qualification: ";
+            cin>>qual;
+            cout<<"Enter the years of experience: ";
+            cin>>yoe;
+        }
+        void disp_te(){
+            cout<<"qualification: "<<qual<<endl;
+            cout<<"year of experience: "<<yoe<<endl;
+        }
+};
+
+class nonteaching : public employee{
+    char grade;
+    public:
+        void inp_non(){
+            cout<<"enter the grade: ";
+            cin>>grade;
+        }
+        void disp_non(){
+            cout<<"Grade: "<<grade<<endl;
+        }
+};
+
+class permanent : public faculty{
+    int basic_p,ac_alw;
+    public:
+        void inp_per(){
+            cout<<"enter the basic pay: "<<endl;
+            cin>>basic_p;
+            cout<<"enter the accademic allowance: ";
+            cin>>ac_alw;
+        }
+        void disp_per(){
+            cout<<"basic pay: "<<basic_p<<endl;
+            cout<<"acedemic allowance: "<<ac_alw<<endl;
+            
+        }
+};
+
+class contract:public faculty{
+    int p_yer;
+    public:
+        void inp_con(){
+            cout<<"enter the probhation years: ";
+            cin>>p_yer;
+        }
+        void disp_con(){
+            cout<<"probhation year: "<<p_yer;
+        }
+};
+int main() {
+    // Write C++ code here
+    permanent p;
+    p.inp_emp();
+    p.inp_te();
+    p.inp_per();
+    p.disp_emp();
+    p.disp_te();
+    p.disp_per();
+    
+    nonteaching n;
+    n.inp_non();
+    n.disp_non();
+    
+    contract c;
+    c.inp_con();
+    c.disp_con();
+    
+    return 0;
+}
