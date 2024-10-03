@@ -1,0 +1,66 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class person{
+    int id;
+    char name[40];
+    public:
+        void inp_per(){
+            cout<<"enter the person id: ";
+            cin>>id;
+            cout<<"Enter the name of the person: ";
+            cin>>name;
+        }
+        void disp_per(){
+            cout<<"Id: "<<id<<endl;
+            cout<<"name: "<<name;
+        }
+};
+class teaching:public person{
+    char sub[40],name[40];
+    public:
+        void inp_te(){
+            cout<<"enter the name of the teacher: ";
+            cin>>name;
+            cout<<"Enter the subject name: ";
+            cin>>sub;
+        }
+        void disp_te(){
+            cout<<"name: "<<name<<endl;
+            cout<<"subject: "<<sub;
+        }
+};
+
+class nonteaching : public person{
+    char dept[50];
+    public:
+        void inp_non(){
+            cout<<"enter the dept name: ";
+            cin>>dept;
+        }
+        void disp_non(){
+            cout<<"dept name: "<<dept;
+        }
+};
+
+class instructor : public person{
+      
+};
+int main() {
+    // Write C++ code here
+    int c;
+    cout<<"enter the number of instructor: ";
+    cin>>c;
+    instructor o[c];
+    for (int i=0;i<c;i++){
+        cout<<"enter the details of instructor "<<i+1<<": "<<endl;
+        o[i].inp_per();
+    }
+    for(int i=0;i<c;i++){
+        cout<<"detalis of the instructor "<<i+1<<" is : "<<endl;
+        o[i].disp_per();
+    }
+
+    return 0;
+}
+__________________________________________________________________________________________
