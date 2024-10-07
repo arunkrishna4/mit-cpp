@@ -1,4 +1,77 @@
+//WAP to implement virtual base class
+//240970059
+//arun krishna
+#include<iostream>
+using namespace std;
+class stud{
+        public:
+                int rollno;
+                char name[30];
+                void inp_stud(){
+                        cout<<"Enter the name: ";
+                        cin>>name;
+                        cout<<"enter the roll no: ";
+                        cin>>rollno;
+                }
+                void disp_stud(){
+                        cout<<name<<endl;
+                        cout<<rollno<<endl;
+                }
+};
 
+class exam:virtual public stud{
+        public:
+                char s1[20],s2[20],s3[20];
+                int m1,m2,m3;
+                void inp_exam(){
+                        cout<<"enter the name and marks of the subject 1: ";
+                        cin>>s1>>m1;
+                        cout<<"Enter the name and marks of the subject 2: ";
+                        cin>>s2>>m2;
+                        cout<<"Enter the name and marks of the subject 3: ";
+                        cin>>s3>>m3;
+                }
+                void disp_exam(){
+                        cout<<s1<<"\t"<<m1<<endl;
+                        cout<<s2<<"\t"<<m2<<endl;
+                        cout<<s3<<"\t"<<m3<<endl;
+                }
+};
+class sports:virtual public stud{
+        public:
+                char sp[20];
+                float points;
+                void inp_sports(){
+                        cout<<"enter the name of the sport: ";
+                        cin>>sp;
+                        cout<<"enter the score: ";
+                        cin>>points;
+                }
+                void disp_sports(){
+                    cout<<sp<<endl;
+                        cout<<points<<endl;
+                }
+};
+class results:public exam,public sports{
+        int res,tot;
+        public:
+                void disp_res(){
+                        tot=m1+m2+m3;
+                        res=(tot*0.7)+(points*0.3);
+                        cout<<tot<<endl;
+                        cout<<res<<endl;
+                }
+};
+int main(){
+        results r;
+        r.inp_stud();
+        r.inp_exam();
+        r.inp_sports();
+        r.disp_stud();
+        r.disp_exam();
+        r.disp_sports();
+        r.disp_res();
+}
 _______________________________________________________________________________________
 #include<iostream>
 using namespace std;
