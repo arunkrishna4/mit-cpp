@@ -1,0 +1,72 @@
+
+_______________________________________________________________________________________
+#include<iostream>
+using namespace std;
+class emp{
+        public:
+                char name[20];
+                int code;
+                void cre_emp(){
+                        cout<<"enter the name: ";
+                        cin>>name;
+                        cout<<"enter the emp code: ";
+                        cin>>code;
+                }
+                void disp_emp(){
+                        cout<<name<<endl;
+                        cout<<code<<endl;
+                }
+};
+class acc : virtual public emp{
+        public:
+                int pay;
+                
+                void cre_acc(){
+                        cout<<"enter the pay: ";
+                        cin>>pay;
+                }
+                void disp_acc(){
+                        cout<<pay<<endl;
+                }
+};
+class admin:virtual public emp{
+        public:
+                int exp;
+                void cre_admin(){
+                        cout<<"enter the experience: ";
+                        cin>>exp;
+                }
+                void disp_admin(){
+                        cout<<exp<<endl;
+                }
+};
+class master:public acc,public admin{
+        public:
+                void update(){
+                        cout<<"Update name: ";
+                        cin>>name;
+                        cout<<"Update emp code: ";
+                        cin>>code;
+                        cout<<"Update experience: ";
+                        cin>>exp;
+                        cout<<"Update pay: ";
+                        cin>>pay;
+                }
+                void aft_update(){
+                        cout<<name<<endl;
+                        cout<<code<<endl;
+                        cout<<exp<<endl;
+                        cout<<pay<<endl;
+                }
+};
+int main(){
+        master m;
+        m.cre_emp();
+        m.cre_acc();
+        m.cre_admin();
+        m.disp_emp();
+        m.disp_acc();
+        m.disp_admin();
+        m.update();
+        m.aft_update();
+}
