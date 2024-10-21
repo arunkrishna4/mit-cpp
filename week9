@@ -1,0 +1,173 @@
+//WAP to implement
+//Arun Krishna
+//240970059
+#include<iostream>
+using namespace std;
+class emp{
+        int id;
+        char name[20];
+        public:
+        virtual void inp(){
+                cout<<"enter the employee ID: ";
+                cin>>id;
+                cout<<"enter the employee name: ";
+                cin>>name;
+        }
+        virtual void disp(){
+                cout<<"Employee ID: "<<id<<endl;
+                cout<<"Employee Name: "<<name<<endl;
+        }
+};
+class laborer:public emp{
+        int sal;
+        public:
+                virtual void inp(){
+                        cout<<"enter the salary for the laborer: ";
+                        cin>>sal;
+                }
+                virtual void disp(){
+                        cout<<"Salary: "<<sal<<endl;
+                }
+};
+class edu{
+        char deg[20];
+        public:
+                virtual void inp(){
+                       cout<<"Enter your degree: ";
+                        cin>>deg;
+                }
+                virtual void disp(){
+                        cout<<"Degree: "<<deg<<endl;
+                }
+};
+class manager:public edu,public emp{
+        int mid;
+        char mname[10];
+        public:
+                void inp(){
+                        emp::inp();
+                        edu::inp();
+                        cout<<"enter manager ID: ";
+                        cin>>mid;
+                        cout<<"enter manager name: ";
+                        cin>>mname;
+                }
+                void disp(){
+                        emp::disp();
+                        edu::disp();
+                        cout<<"Manager ID: "<<mid<<endl;
+                        cout<<"Mabager Name: "<<mname<<endl;
+                }
+};
+class sci:public emp,public edu{
+        char des[20];
+        public:
+                void inp(){
+                        emp::inp();
+                        edu::inp();
+                        cout<<"enter the designation: ";
+                        cin>>des;
+                }
+                void disp(){
+                        emp::disp();
+                        edu::disp();
+                        cout<<"Designation: "<<des<<endl;
+                }
+};
+int main(){
+        emp *emp;
+        edu *edu;
+        sci s;
+        laborer l;
+        manager m;
+        int ch;
+        do
+        {
+                cout<<"1.laborer"<<endl;
+                cout<<"2.scientist"<<endl;
+                cout<<"3.manager"<<endl;
+                cout<<"Enter your choice: ";
+                cin>>ch;
+                switch(ch){
+                        case 1:
+                                emp=&l;
+                                emp->inp();
+                                emp->disp();
+                                break;
+                        case 2:
+                                edu=&s;;
+                                edu->inp();
+                                edu->disp();
+                                break;
+                        case 3:
+                                emp=&m;
+                                emp->inp();
+                                emp->disp();
+                                break;
+                        default:
+                                exit(0);
+                }
+        }
+        while(ch!=0);
+        return 0;
+
+}
+__________________________________________________________________________________________________
+#include<iostream>
+using namespace std;
+class shape{
+        public:
+                double l1,l2;
+                void get_data(){
+                        cout<<"enter 1st length: ";
+                        cin>>l1;
+                        cout<<"enter 2nd length: ";
+                        cin>>l2;
+                }
+                virtual void disp_area()=0;
+
+};
+class rectangle:public shape{
+        double area;
+        public:
+                void disp_area(){
+                        area=l1*l2;
+                        cout<<"Area of rectangle is: "<<area<<endl;
+                }
+};
+
+class triangle:public shape{
+        double area;
+        public:
+                void disp_area(){
+                        area=0.5*l1*l2;
+                        cout<<"Area of triangle is: "<<area<<endl;
+                }
+};
+int main(){
+        rectangle r;
+        triangle t;
+        int ch;
+        do
+        {
+                cout<<"1.rectangle"<<endl;
+                cout<<"2.Triangle"<<endl;
+                cout<<"Enter your choice: "<<endl;
+                cin>>ch;
+                switch(ch){
+                        case 1:
+                                r.get_data();
+                                r.disp_area();
+                                break;
+                        case 2:
+                                t.get_data();
+                                t.disp_area();
+                                break;
+                        default:
+                                exit(0);
+                }
+        }
+        while(ch!=0);
+
+        return 0;
+}
