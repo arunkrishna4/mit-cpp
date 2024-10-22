@@ -48,123 +48,131 @@ int main(){
 --------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
 
-class Cricket{
-        int player_code;
-        string name;
-        int no_of_matches;
-        int total_runs;
-        int no_of_time_out;
+class Cricket {
+    int player_code;
+    string name;
+    int no_of_matches;
+    int total_runs;
+    int no_of_time_out;
 
-        public:
-
-        void collect_data(){
-        cout << "enter player name" << endl;
-        cin>>name;
-        cout << "enter player code" << endl;
+public:
+    void collect_data() {
+        cout << "Enter player name: ";
+        cin >> name;
+        cout << "Enter player code: ";
         cin >> player_code;
-        cout << "enter no of matches played" << endl;
+        cout << "Enter number of matches played: ";
         cin >> no_of_matches;
-        cout << "enter total runs" << endl;
+        cout << "Enter total runs: ";
         cin >> total_runs;
-        cout << "enter no of times out" << endl;
+        cout << "Enter number of times out: ";
         cin >> no_of_time_out;
 
-        if(no_of_time_out > no_of_matches){
-                cout << "total out can't be greater than matches played...try again!!!! " << endl;
-                exit(0);
+        if (no_of_time_out > no_of_matches) {
+            cout << "Total outs can't be greater than matches played. Try again!" << endl;
+            exit(0);
         }
-        }
-         friend void avg_runs(Cricket obj[], int code,int size);
-        friend void avg_runs(Cricket obj[],int size);
-        friend void Sort_players(Cricket obj[],int size);
-        friend void display_players(Cricket obj[],int size);
+    }
+
+    friend void avg_runs(Cricket obj[], int code, int size);
+    friend void avg_runs(Cricket obj[], int size);
+    friend void Sort_players(Cricket obj[], int size);
+    friend void display_players(Cricket obj[], int size);
 };
 
-void avg_runs(Cricket obj[], int code, int size){
-        int flag = 0;
-        int no = -1;
-        for(int i=0;i<size;i++){
-        if(obj[i].player_code == code)
-        {
-                no = i;
-                flag = 1;
-                break;
+void avg_runs(Cricket obj[], int code, int size) {
+    int flag = 0;
+    int no = -1;
+    for (int i = 0; i < size; i++) {
+        if (obj[i].player_code == code) {
+            no = i;
+            flag = 1;
+            break;
         }
-        }
+    }
 
-        if(flag == 1){
-                cout << "avg runs of " << obj[no].name << " is : " << obj[no].total_runs/obj[no].no_of_matches << endl;
+    if (flag == 1) {
+        if (obj[no].no_of_matches != 0) {
+            cout << "Average runs of " << obj[no].name << " is: "
+                 << static_cast<float>(obj[no].total_runs) / obj[no].no_of_matches << endl;
+        } else {
+            cout << obj[no].name << " has not played any matches." << endl;
         }
-        else{
-                cout << "No record Found..." << endl;
-        }i
+    } else {
+        cout << "No record found..." << endl;
+    }
 }
 
-void avg_runs(Cricket obj[],int size){
-for(int i=0;i<size;i++){
-        cout << "avg of " << obj[i].name << " is " << obj[i].total_runs / obj[i].no_of_matches << endl;
-}
+void avg_runs(Cricket obj[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (obj[i].no_of_matches != 0) {
+            cout << "Average runs of " << obj[i].name << " is: "
+                 << static_cast<float>(obj[i].total_runs) / obj[i].no_of_matches << endl;
+        } else {
+            cout << obj[i].name << " has not played any matches." << endl;
+        }
+    }
 }
 
-void display_players(Cricket obj[],int size){
-        for(int i=0;i<size;i++){
-                cout << "total runs of " << obj[i].name << " is " << obj[i].total_runs<<endl;
-        }
+void display_players(Cricket obj[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << "Total runs of " << obj[i].name << " is " << obj[i].total_runs << endl;
+    }
 }
 
-void Sort_players(Cricket obj[] , int size){
-                for(int i =0;i<size-1;i++){
-                        for(int j = i+1; j<size; j++){
-                                if(obj[j].total_runs < obj[i].total_runs){
-                                        swap(obj[i],obj[j]);
-                                }
-                        }
-                }
-                display_players(obj,size);
-
+void Sort_players(Cricket obj[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (obj[j].total_runs < obj[i].total_runs) {
+                swap(obj[i], obj[j]);
+            }
+        }
+    }
+    display_players(obj, size);
 }
-int main(){
-        int num;
-        cout << "enter number of players(MAX 10 Allowed!!)" << endl;
-        cin >> num;
-        if(num > 10){
-             exit(0);
+
+int main() {
+    int num;
+    cout << "Enter number of players (MAX 10 Allowed!): ";
+    cin >> num;
+    if (num > 10) {
+        cout << "Exceeded maximum number of players. Exiting..." << endl;
+        exit(0);
+    }
+
+    Cricket cric[num];
+    while (1) {
+        int option;
+        cout << "****** Choose One Option *******" << endl;
+        cout << "Press 1 to enter details of player" << endl;
+        cout << "Press 2 to display average of single player" << endl;
+        cout << "Press 3 to display average of all players" << endl;
+        cout << "Press 4 to display list of players in sorted order" << endl;
+        cout << "Press any other key to exit" << endl;
+        cin >> option;
+
+        if (option == 1) {
+            for (int i = 0; i < num; i++) {
+                cric[i].collect_data();
+            }
+        } else if (option == 2) {
+            int code;
+            cout << "Enter code of player: ";
+            cin >> code;
+            avg_runs(cric, code, num);
+        } else if (option == 3) {
+            avg_runs(cric, num);
+        } else if (option == 4) {
+            Sort_players(cric, num);
+        } else {
+            break;
         }
-        Cricket cric[num];
-        while(1){
-                int option;
-                cout << "******Choose One Option*******" <<endl;
-                cout << "Press 1 to enter details of player" <<endl;
-                cout << "Press 2 to display avg of single player" <<endl;
-                cout << "Press 3 to display avg of all player" <<endl;
-                cout << "Press 4 to display list of players in sorted order" <<endl;
-                cout << "Press any key to exit" << endl;
-                cin >> option;
-                if(option == 1){
-                        for(int i = 0; i<num;i++){
-                                cric[i].collect_data();
-                        }
-                }
-                else if(option == 2){
-                        int code;
-                        cout << "enter code of player:" << endl;
-                        cin >> code;
-                        avg_runs(cric,code,num);
-                }
-                else if(option == 3){
-                        avg_runs(cric,num);
-                }
-                else if(option == 4){
-                        Sort_players(cric,num);
-                }
-                 else{
-                        break;
-                }
-        }
-        return 0;
+    }
+    return 0;
 }
 ----------------------------------------------------------------------------------------------------------
 #include<iostream>
