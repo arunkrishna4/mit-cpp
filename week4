@@ -99,56 +99,121 @@ int main(){
 --------------------------------------------------------------------------------------------
 #include<iostream>
 using namespace std;
-int to_runs;
-class crick{
-        int pcode,no_mat,tot_run,not_out;
-        char name[20];
+
+class Cricket{
+        int player_code;
+        string name;
+        int no_of_matches;
+        int total_runs;
+        int no_of_time_out;
+
         public:
-                float temp,tot_avg;
-                void inp(){
-                        cout<<"enter your name: ";
-                        cin>>name;
-                        cout<<" enter the player code: ";
-                        cin>>pcode;
-                        cout<<"enter the number of matches played: ";
-                        cin>>no_mat;
-                        cout<<"enter the total runs: ";
-                        cin>>tot_run;
-                        cout<<"enter the number of times not out: ";
-                        cin>>not_out;
-                }
-                void avg(){
-                        cout<<"The average runs of the player is: "<<(tot_run/no_mat)<<endl;
-                }
-                int total_runs(crick &c){
-                           to_runs+=c.tot_run;
-                           return to_runs;
-                }
-                float avg(crick c,int n){
-                           temp+=c.tot_run;
-                           tot_avg=temp/n;
-                           return tot_avg;
-                }
+
+        void collect_data(){
+        cout << "enter player name" << endl;
+        cin>>name;
+        cout << "enter player code" << endl;
+        cin >> player_code;
+        cout << "enter no of matches played" << endl;
+        cin >> no_of_matches;
+        cout << "enter total runs" << endl;
+        cin >> total_runs;
+        cout << "enter no of times out" << endl;
+        cin >> no_of_time_out;
+
+        if(no_of_time_out > no_of_matches){
+                cout << "total out can't be greater than matches played...try again!!!! " << endl;
+                exit(0);
+        }
+        }
+         friend void avg_runs(Cricket obj[], int code,int size);
+        friend void avg_runs(Cricket obj[],int size);
+        friend void Sort_players(Cricket obj[],int size);
+        friend void display_players(Cricket obj[],int size);
 };
 
-float avg(crick c,int n){
-        float temp,tot_avg;
-        temp+=c.tot_run;
-        tot_avg=temp/n;
-        return tot_avg;
+void avg_runs(Cricket obj[], int code, int size){
+        int flag = 0;
+        int no = -1;
+        for(int i=0;i<size;i++){
+        if(obj[i].player_code == code)
+        {
+                no = i;
+                flag = 1;
+                break;
+        }
+        }
+
+        if(flag == 1){
+                cout << "avg runs of " << obj[no].name << " is : " << obj[no].total_runs/obj[no].no_of_matches << endl;
+        }
+        else{
+                cout << "No record Found..." << endl;
+        }i
+}
+
+void avg_runs(Cricket obj[],int size){
+for(int i=0;i<size;i++){
+        cout << "avg of " << obj[i].name << " is " << obj[i].total_runs / obj[i].no_of_matches << endl;
+}
+}
+
+void display_players(Cricket obj[],int size){
+        for(int i=0;i<size;i++){
+                cout << "total runs of " << obj[i].name << " is " << obj[i].total_runs<<endl;
+        }
+}
+
+void Sort_players(Cricket obj[] , int size){
+                for(int i =0;i<size-1;i++){
+                        for(int j = i+1; j<size; j++){
+                                if(obj[j].total_runs < obj[i].total_runs){
+                                        swap(obj[i],obj[j]);
+                                }
+                        }
+                }
+                display_players(obj,size);
+
 }
 int main(){
-        int num,tot_runs,avg_runs;
-        cout<<"enter the number of players: ";
-        cin>>num;
-        crick ply[num];
-        for (int i=0;i<num;i++){
-                ply[i].inp();
-                ply[i].avg();
-                if(i>=2){
-                        cout<<"avg score of the players: "<<avg(ply[i],i)<<endl;
+        int num;
+        cout << "enter number of players(MAX 10 Allowed!!)" << endl;
+        cin >> num;
+        if(num > 10){
+             exit(0);
+        }
+        Cricket cric[num];
+        while(1){
+                int option;
+                cout << "******Choose One Option*******" <<endl;
+                cout << "Press 1 to enter details of player" <<endl;
+                cout << "Press 2 to display avg of single player" <<endl;
+                cout << "Press 3 to display avg of all player" <<endl;
+                cout << "Press 4 to display list of players in sorted order" <<endl;
+                cout << "Press any key to exit" << endl;
+                cin >> option;
+                if(option == 1){
+                        for(int i = 0; i<num;i++){
+                                cric[i].collect_data();
+                        }
                 }
-}
+                else if(option == 2){
+                        int code;
+                        cout << "enter code of player:" << endl;
+                        cin >> code;
+                        avg_runs(cric,code,num);
+                }
+                else if(option == 3){
+                        avg_runs(cric,num);
+                }
+                else if(option == 4){
+                        Sort_players(cric,num);
+                }
+                 else{
+                        break;
+                }
+        }
+        return 0;
 }
 ----------------------------------------------------------------------------------------------------------
 #include<iostream>
