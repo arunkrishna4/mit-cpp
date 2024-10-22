@@ -1,53 +1,3 @@
-//240970059
-#include<iostream>
-                }
-                void disp(){
-                        cout<<"name: "<<name<<endl;
-                        cout<<"account number: "<<acc_no<<endl;
-                        cout<<"account type: "<<acc_typ<<endl;
-                        cout<<"balance: "<<bal<<endl;
-
-                }
-                friend void wth(bank &);
-};
-void wth(bank &b){
-        int amt;
-        cout<<"Your current balance is: "<<b.bal<<endl;
-        cout<<"enter the amount to withdraw: ";
-        cin>>amt;
-        if(amt>b.bal){
-                cout<<"Insufficient balance"<<endl;
-        }
-        else{
-                b.bal-=amt;
-                cout<<"Your current balance is: "<<b.bal<<endl;
-
-        }
-}
-
-
-int main(){
-        int ch1,ch2;
-        bank b1,b2;
-        b1.inp();
-        b2.inp();
-        cout<<"Enter 1 to deposit \n Enter 2 to withdraw"<<endl;
-        cin>>ch1;
-        switch(ch1){
-                case 1:
-                        b1.dep();
-                        b2.dep();
-                        break;
-                case 2:
-                        wth(b1);
-                        wth(b2);
-                        break;
-        }
-        b1.disp();
-        b2.disp();
-}
---------------------------------------------------------------------------------------------
-
 #include<iostream>
 using namespace std;
 class flight{
@@ -95,6 +45,7 @@ int main(){
 
 
 }
+--------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------
 #include<iostream>
